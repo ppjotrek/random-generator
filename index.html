@@ -48,7 +48,6 @@
 
             let max = document.getElementById('max').value;
             console.log(max);
-            max++;
 
             if(max <= 0){
 
@@ -56,13 +55,47 @@
 
             } else {
 
-                let value = generate(max);
+                getJSONfile("items.json", function(data) {
+                    console.log(data);
 
-                document.getElementById("number").innerHTML = value;
+                    let json = JSON.parse(data);
+
+                    let dataLength = Object.keys(json.items).length;
+                    console.log("JSON length is: " + dataLength);
+
+                    let value = generate(dataLength);
+
+                    pickedItem = json.items[value].name;
+                    console.log(pickedItem);
+
+                    document.getElementById("number").innerHTML = pickedItem;
+
+                });
 
             }
 
             
+
+
+        };
+
+        function getJSONfile(path, callback) {
+
+            let xhrObject = new XMLHttpRequest();
+
+            xhrObject.onreadystatechange = function(){
+
+                if(xhrObject.readyState === 4){
+                    if(xhrObject.status === 200 || xhrObject.status === 304){
+                if(callback) callback(xhrObject.responseText);
+                }
+            }
+
+            }
+
+            xhrObject.open("GET", path);
+
+            xhrObject.send();
 
 
         };
