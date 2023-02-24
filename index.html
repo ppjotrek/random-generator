@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random number generator</title>
+    <style>
+        body {
+            background-color: pink;
+            font-family: Arial, Helvetica, sans-serif;
+            color: darkblue;
+        }
+
+        div {
+            margin: auto;
+            width: 50%;
+            height: 50%;
+            text-align: center;
+        }
+
+        #number {
+
+            margin-top: 20px;
+            padding: 30px;
+            background-color: violet;
+            border-radius: 7px;
+            color: white;
+            font-size: large;
+
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <h1>Random number generator</h1>
+    <label for="max">Generating from 0 to: </label>
+    <input type="number" id="max">
+    <button id="generate">Generate</button>
+    <div id="number">Waiting for generator to be started...</div>
+    </div>
+
+    <script>
+
+        document.getElementById("generate").addEventListener("click", click);
+
+        function click() {
+
+            let max = document.getElementById('max').value;
+            console.log(max);
+            max++;
+
+            if(max <= 0){
+
+                document.getElementById("number").innerHTML = "set proper maximum value first!";
+
+            } else {
+
+                let value = generate(max);
+
+                document.getElementById("number").innerHTML = value;
+
+            }
+
+            
+
+
+        };
+
+        generate = function(max){
+
+            return Math.floor(Math.random() * max);
+
+        };
+
+    </script>
+
+</body>
+</html>
