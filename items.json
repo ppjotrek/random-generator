@@ -1,20 +1,16 @@
 {
     "items": [
         {
-            "name": "Witek",
-            "number": "1"
+            "name": "Witek"
         },
         {
-            "name": "Mikołaj",
-            "number": "2"
+            "name": "Mikołaj"
         },
         {
-            "name": "Piotrek",
-            "number": "3"
+            "name": "Piotrek"
         },
         {
-            "name": "Mati",
-            "number": "4"
+            "name": "Mati"
         }
     ]
 }
